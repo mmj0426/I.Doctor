@@ -2,6 +2,7 @@
 
 
 #include "IDCharacter.h"
+#include "IDAnimInstance.h"
 
 // Sets default values
 AIDCharacter::AIDCharacter()
@@ -17,6 +18,8 @@ AIDCharacter::AIDCharacter()
 
 	GetCapsuleComponent()->SetCapsuleHalfHeight(40.0f);
 	GetCapsuleComponent()->SetCapsuleRadius(20.0f);
+
+	GetCharacterMovement()->JumpZVelocity = 400.0f;
 
 	//메쉬 초기값 설정
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, -40.0f), FRotator(0.0f, 0.0f, 0.0f));
@@ -34,7 +37,7 @@ AIDCharacter::AIDCharacter()
 	GetMesh()->SetAnimationMode(EAnimationMode::AnimationBlueprint);
 
 	static ConstructorHelpers::FClassFinder<UAnimInstance>
-		AnimBP_DEER(TEXT("/Game/CharacterAsset/Animations/AnimBP_Deer.AnimBP_Deer_C"));
+		AnimBP_DEER(TEXT("/Game/Animations/AnimBP_Deer.AnimBP_Deer_C"));
 	if (AnimBP_DEER.Succeeded())
 	{
 		GetMesh()->SetAnimInstanceClass(AnimBP_DEER.Class);
@@ -53,6 +56,11 @@ void AIDCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	auto AIDAnimInstance = Cast<UIDAnimInstance>(GetMesh()->GetAnimInstance());
+	if (nullptr != AIDAnimInstance)
+	{
+		AIDAnimInstance->SetPawnSpeed(GetVelocity().Size());
+	}
 }
 
 // Called to bind functionality to input
@@ -63,6 +71,7 @@ void AIDCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	//PlayerInputComponent->BindAxis or BindAction (TEXT("프로젝트 설정->입력에 설정해놓은 이름"), this, Pawn이 신호받을 수 있도록 바인딩할 UE 오브젝트 인스턴스의 함수 포인터);
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AIDCharacter::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AIDCharacter::MoveRight);
+	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AIDCharacter::Jump);
 }
 
 void AIDCharacter::MoveForward(float NewAxisValue)
