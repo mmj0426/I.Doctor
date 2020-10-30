@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "IDoctor.h"
 #include "GameFramework/GameModeBase.h"
 #include "IDoctorGameMode.generated.h"
 
@@ -13,6 +13,8 @@ class AIDoctorGameMode : public AGameModeBase
 
 public:
 	AIDoctorGameMode();
+
+	virtual void PostLogin(APlayerController* NewPlayer) override;
 };
 
 
