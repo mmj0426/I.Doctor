@@ -24,7 +24,7 @@ AIDCharacter::AIDCharacter()
 	//메쉬 초기값 설정
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, -40.0f), FRotator(0.0f, 0.0f, 0.0f));
 	
-	SpringArm->TargetArmLength = 500.0f;
+	SpringArm->TargetArmLength = 600.0f;
 	SpringArm->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 60.0f), FRotator(0.0f, 0.0f, 0.0f));
 
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh>
