@@ -37,5 +37,7 @@ public :
 private:
 	void MoveForward(float NewAxisValue);
 	void MoveRight(float NewAxisValue);
+	void LookUp(float NewAxisValue);
+	void Turn(float NewAxisValue);
 
 };

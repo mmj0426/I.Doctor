@@ -22,10 +22,10 @@ AIDCharacter::AIDCharacter()
 	GetCharacterMovement()->JumpZVelocity = 400.0f;
 
 	//메쉬 초기값 설정
-	GetMesh()->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, -40.0f), FRotator(0.0f, 0.0f, 0.0f));
+	GetMesh()->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, -40.0f), FRotator(0.0f, -90.0f, 0.0f));
 	
 	SpringArm->TargetArmLength = 600.0f;
-	SpringArm->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 60.0f), FRotator(0.0f, 0.0f, 0.0f));
+	SpringArm->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 60.0f), FRotator(-15.0f, 0.0f, 0.0f));
 
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh>
 		SK_DEER(TEXT("/Game/CharacterAsset/Meshes/OneMeshCharacter/DeerSK.DeerSK"));
@@ -71,15 +71,27 @@ void AIDCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	//PlayerInputComponent->BindAxis or BindAction (TEXT("프로젝트 설정->입력에 설정해놓은 이름"), this, Pawn이 신호받을 수 있도록 바인딩할 UE 오브젝트 인스턴스의 함수 포인터);
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AIDCharacter::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AIDCharacter::MoveRight);
+	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AIDCharacter::LookUp);
+	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &AIDCharacter::Turn);
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AIDCharacter::Jump);
 }
 
 void AIDCharacter::MoveForward(float NewAxisValue)
 {
-	AddMovementInput(GetActorForwardVector(), NewAxisValue);
+	AddMovementInput(FRotationMatrix(FRotator(0.0f, GetControlRotation().Yaw, 0.0f)).GetUnitAxis(EAxis::X), NewAxisValue);
 }
 
 void AIDCharacter::MoveRight(float NewAxisValue)
 {
-	AddMovementInput(GetActorRightVector(), NewAxisValue);
+	AddMovementInput(FRotationMatrix(FRotator(0.0f, GetControlRotation().Yaw, 0.0f)).GetUnitAxis(EAxis::Y), NewAxisValue);
+}
+
+void AIDCharacter::LookUp(float NewAxisValue)
+{
+	AddControllerPitchInput(NewAxisValue);
+}
+
+void AIDCharacter::Turn(float NewAxisValue)
+{
+	AddControllerYawInput(NewAxisValue);
 }
