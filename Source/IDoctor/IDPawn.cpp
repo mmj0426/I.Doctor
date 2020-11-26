@@ -77,10 +77,6 @@ void AIDPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	//플레이어의 입력값과 바인딩(연결)
-	//PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AIDPawn::MoveForward);
-	//PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AIDPawn::MoveRight);
-
 }
 
 void AIDPawn::MoveForward(float NewAxisValue)

@@ -26,9 +26,17 @@ AIDCharacter::AIDCharacter()
 	
 	SpringArm->TargetArmLength = 600.0f;
 	SpringArm->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 60.0f), FRotator(-15.0f, 0.0f, 0.0f));
+	SpringArm->bUsePawnControlRotation = true;
+	SpringArm->bInheritPitch = true;
+	SpringArm->bInheritRoll = true;
+	SpringArm->bInheritYaw = true;
+	SpringArm->bDoCollisionTest = true;
+	bUseControllerRotationYaw = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh>
-		SK_DEER(TEXT("/Game/CharacterAsset/Meshes/OneMeshCharacter/DeerSK.DeerSK"));
+		SK_DEER(TEXT("/Game/CharacterAsset/CharacterSM/DeerSK.DeerSK"));
 	if (SK_DEER.Succeeded())
 	{
 		GetMesh()->SetSkeletalMesh(SK_DEER.Object);
