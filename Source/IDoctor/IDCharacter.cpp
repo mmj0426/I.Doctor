@@ -4,6 +4,8 @@
 #include "IDCharacter.h"
 #include "IDAnimInstance.h"
 
+#include "Components/WidgetComponent.h"
+
 // Sets default values
 AIDCharacter::AIDCharacter()
 {
@@ -12,6 +14,13 @@ AIDCharacter::AIDCharacter()
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SPRINGARM"));
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CAMERA"));
+	//DialogueWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("DIALOGUEWIDGET"));
+
+	//static ConstructorHelpers::FClassFinder<UUserWidget> UI_DIALOGUE(TEXT("/Game/Blueprints/BPWidget_Dialogue.BPWidget_Dialogue_C"));
+	//if (UI_DIALOGUE.Succeeded())
+	//{
+	//	DialogueWidget->SetWidgetClass(UI_DIALOGUE.Class);
+	//}
 
 	SpringArm->SetupAttachment(GetCapsuleComponent());
 	Camera->SetupAttachment(SpringArm);
@@ -81,6 +90,7 @@ void AIDCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AIDCharacter::MoveRight);
 	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AIDCharacter::LookUp);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &AIDCharacter::Turn);
+	
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AIDCharacter::Jump);
 }
 

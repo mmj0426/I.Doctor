@@ -34,10 +34,12 @@ public :
 	UPROPERTY(VisibleAnywhere, Category = Camera)
 		UCameraComponent* Camera;
 
+	UPROPERTY(VisibleAnywhere, Category = UI)
+		class UWidgetComponent* DialogueWidget;
+
 private:
 	void MoveForward(float NewAxisValue);
 	void MoveRight(float NewAxisValue);
 	void LookUp(float NewAxisValue);
 	void Turn(float NewAxisValue);
-
 };
