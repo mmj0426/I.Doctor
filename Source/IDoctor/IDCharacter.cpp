@@ -92,6 +92,7 @@ void AIDCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &AIDCharacter::Turn);
 	
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AIDCharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("Interaction"), EInputEvent::IE_Pressed, this, &AIDCharacter::Interact);
 }
 
 void AIDCharacter::MoveForward(float NewAxisValue)
@@ -112,4 +113,10 @@ void AIDCharacter::LookUp(float NewAxisValue)
 void AIDCharacter::Turn(float NewAxisValue)
 {
 	AddControllerYawInput(NewAxisValue);
+}
+
+void AIDCharacter::Interact()
+{
+	isInteracted = true;
+	ID_S(Warning);
 }

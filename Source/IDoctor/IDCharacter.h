@@ -37,9 +37,14 @@ public :
 	UPROPERTY(VisibleAnywhere, Category = UI)
 		class UWidgetComponent* DialogueWidget;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Interact , Meta = (AllowPrivateAccess = true))
+		bool isInteracted;
+
 private:
 	void MoveForward(float NewAxisValue);
 	void MoveRight(float NewAxisValue);
 	void LookUp(float NewAxisValue);
 	void Turn(float NewAxisValue);
+
+	void Interact();
 };
