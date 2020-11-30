@@ -9,7 +9,7 @@
 // Sets default values
 AIDCharacter::AIDCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SPRINGARM"));
@@ -25,7 +25,7 @@ AIDCharacter::AIDCharacter()
 
 	//메쉬 초기값 설정
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, -40.0f), FRotator(0.0f, -90.0f, 0.0f));
-	
+
 	SpringArm->TargetArmLength = 600.0f;
 	SpringArm->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 60.0f), FRotator(-15.0f, 0.0f, 0.0f));
 	SpringArm->bUsePawnControlRotation = true;
@@ -58,7 +58,7 @@ AIDCharacter::AIDCharacter()
 void AIDCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 
 }
 
@@ -84,7 +84,7 @@ void AIDCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AIDCharacter::MoveRight);
 	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AIDCharacter::LookUp);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &AIDCharacter::Turn);
-	
+
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AIDCharacter::Jump);
 	PlayerInputComponent->BindAction(TEXT("Interaction"), EInputEvent::IE_Pressed, this, &AIDCharacter::Interact);
 }
@@ -114,7 +114,5 @@ void AIDCharacter::Interact()
 	isInteracted = true;
 
 	NpcDialogue();
-
-	ID_S(Warning);
 
 }

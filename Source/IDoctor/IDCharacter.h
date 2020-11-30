@@ -34,11 +34,14 @@ public :
 	UPROPERTY(VisibleAnywhere, Category = Camera)
 		UCameraComponent* Camera;
 
+	//Dialogue
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Interact , Meta = (AllowPrivateAccess = true))
 		bool isInteracted;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = Dialogue)
 		void NpcDialogue();
+
+
 
 private:
 	void MoveForward(float NewAxisValue);
