@@ -14,13 +14,6 @@ AIDCharacter::AIDCharacter()
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SPRINGARM"));
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CAMERA"));
-	//DialogueWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("DIALOGUEWIDGET"));
-
-	//static ConstructorHelpers::FClassFinder<UUserWidget> UI_DIALOGUE(TEXT("/Game/Blueprints/BPWidget_Dialogue.BPWidget_Dialogue_C"));
-	//if (UI_DIALOGUE.Succeeded())
-	//{
-	//	DialogueWidget->SetWidgetClass(UI_DIALOGUE.Class);
-	//}
 
 	SpringArm->SetupAttachment(GetCapsuleComponent());
 	Camera->SetupAttachment(SpringArm);
@@ -66,6 +59,7 @@ void AIDCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+
 }
 
 // Called every frame
@@ -118,5 +112,9 @@ void AIDCharacter::Turn(float NewAxisValue)
 void AIDCharacter::Interact()
 {
 	isInteracted = true;
+
+	NpcDialogue();
+
 	ID_S(Warning);
+
 }
