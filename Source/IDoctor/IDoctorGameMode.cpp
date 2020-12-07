@@ -7,8 +7,12 @@
 
 AIDoctorGameMode::AIDoctorGameMode()
 {
-	//DefaultPawnClass = AIDPawn::StaticClass();
-	DefaultPawnClass = AIDCharacter::StaticClass();
+	//DefaultPawnClass = AIDPawn::StaticClass();	
+	//DefaultPawnClass = AIDCharacter::StaticClass();
+
+	static ConstructorHelpers::FClassFinder<ACharacter> PlayerCharacter(TEXT("/Game/Blueprints/BP_IDCharacter.BP_IDCharacter_C"));
+	DefaultPawnClass = PlayerCharacter.Class;
+
 	PlayerControllerClass = AIDPlayerController::StaticClass();
 }
 

@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "IDCharacter.generated.h"
 
+
 UCLASS()
 class IDOCTOR_API AIDCharacter : public ACharacter
 {
@@ -14,6 +15,8 @@ class IDOCTOR_API AIDCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AIDCharacter();
+
+	virtual void PostInitializeComponents() override;
 
 protected:
 	// Called when the game starts or when spawned
@@ -28,11 +31,27 @@ public:
 
 public : 
 
-	UPROPERTY(VisibleAnywhere, Category = Camera)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Camera)
 		USpringArmComponent* SpringArm;
 
 	UPROPERTY(VisibleAnywhere, Category = Camera)
 		UCameraComponent* Camera;
+
+	//Dialogue
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Interact , Meta = (AllowPrivateAccess = true))
+		bool isInteracted;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Interact, Meta = (AllowPrivateAccess = true))
+		bool isOverlapped;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = Dialogue)
+		void NpcDialogue();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = UI)
+		class UWidgetComponent* WidgetInteraction;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Dialogue)
+		class AIDNpc_Rabbit* Npc;
 
 private:
 	void MoveForward(float NewAxisValue);
@@ -40,4 +59,6 @@ private:
 	void LookUp(float NewAxisValue);
 	void Turn(float NewAxisValue);
 
+	UFUNCTION()
+		void Interact();
 };
