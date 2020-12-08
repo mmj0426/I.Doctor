@@ -15,10 +15,16 @@ class IDOCTOR_API UWidget_Interaction : public UUserWidget
 	GENERATED_BODY()
 	
 public : 
-	void BindOnOverlap(class AIDNpc_Rabbit* NewNpcOverlap);
+	void SetInteractionText(FString _text);
 
-	
+protected :
 
-private : 
-	TWeakObjectPtr<class AIDNpc_Rabbit> CurrentNpcOverlap;
+	UPROPERTY(BlueprintReadOnly,meta = (BindWidget))
+		class UTextBlock* InteractionText;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+		FString Text;
+
+	virtual void NativeConstruct() override;
+
 };

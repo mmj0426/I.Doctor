@@ -6,8 +6,6 @@
 #include "GameFramework/Character.h"
 #include "IDNpc_Rabbit.generated.h"
 
-DECLARE_MULTICAST_DELEGATE(FOnOverlapBeginDelegate);
-
 UCLASS()
 class IDOCTOR_API AIDNpc_Rabbit : public ACharacter
 {
@@ -29,7 +27,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-public : 
+public :  
 	UPROPERTY(VisibleAnywhere, Category = Collision)
 		USphereComponent* Sphere;
 
@@ -40,5 +38,4 @@ public :
 	UFUNCTION()
 		void OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
-	FOnOverlapBeginDelegate OnOverlap;
 };

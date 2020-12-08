@@ -1,20 +1,19 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "Widget_Interaction.h"
 #include "IDNpc_Rabbit.h"
 
-void UWidget_Interaction::BindOnOverlap(AIDNpc_Rabbit* NewNpcOverlap)
-{
-	//¿À·ù°¡ ³²... ÇØ°áÇÊ¿ä
-	IDCHECK(nullptr != NewNpcOverlap);
+#include "Components/TextBlock.h"
 
-	CurrentNpcOverlap = NewNpcOverlap;
-	NewNpcOverlap->OnOverlap.AddLambda([this]()->void
-		{
-			if (CurrentNpcOverlap.IsValid())
-			{
-				IDLOG(Warning, TEXT("Rabbit!!!!"));
-			}
-		});
+void UWidget_Interaction::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	//InteractionText->SetText(FText::FromString(TEXT(" ")));
+}
+
+void UWidget_Interaction::SetInteractionText(FString _text)
+{
+	Text = _text;
 }

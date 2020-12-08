@@ -42,7 +42,10 @@ public :
 		bool isInteracted;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Interact, Meta = (AllowPrivateAccess = true))
-		bool isOverlapped;
+		bool isNpcOverlapped;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Interact, Meta = (AllowPrivateAccess = true))
+		bool isItemOverlapped;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = Dialogue)
 		void NpcDialogue();
@@ -50,8 +53,6 @@ public :
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = UI)
 		class UWidgetComponent* WidgetInteraction;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Dialogue)
-		class AIDNpc_Rabbit* Npc;
 
 private:
 	void MoveForward(float NewAxisValue);
@@ -61,4 +62,5 @@ private:
 
 	UFUNCTION()
 		void Interact();
+
 };

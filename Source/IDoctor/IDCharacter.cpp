@@ -16,6 +16,7 @@ AIDCharacter::AIDCharacter()
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SPRINGARM"));
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CAMERA"));
+	//Npc = CreateDefaultSubobject<AIDNpc_Rabbit>(TEXT("Npc_Rabbit"));
 
 	SpringArm->SetupAttachment(GetCapsuleComponent());
 	Camera->SetupAttachment(SpringArm);
@@ -73,6 +74,7 @@ AIDCharacter::AIDCharacter()
 	}
 
 }
+
 void AIDCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
@@ -84,14 +86,6 @@ void AIDCharacter::PostInitializeComponents()
 void AIDCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
-	//Overlap
-	auto OverlapWidget = Cast<UWidget_Interaction>(WidgetInteraction->GetUserWidgetObject());
-	if (nullptr != OverlapWidget)
-	{
-		IDLOG(Warning, TEXT("UMG Bind"));
-		OverlapWidget->BindOnOverlap(Npc);
-	}
 }
 
 // Called every frame
@@ -141,12 +135,18 @@ void AIDCharacter::Turn(float NewAxisValue)
 	AddControllerYawInput(NewAxisValue);
 }
 
+// FÅ° ´­·¶À» ¶§
 void AIDCharacter::Interact()
 {
-	isInteracted = true;
+	if (isNpcOverlapped == true)
+	{
+		WidgetInteraction->SetVisibility(false);
+		NpcDialogue();
+	}
 
-	WidgetInteraction->SetVisibility(false);
-
-	NpcDialogue();
+	if (isItemOverlapped == true)
+	{
+		
+	}
 
 }
