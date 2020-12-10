@@ -4,23 +4,23 @@
 
 #include "IDoctor.h"
 #include "Blueprint/UserWidget.h"
-#include "Widget_Interaction.generated.h"
+#include "Widget_Item.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class IDOCTOR_API UWidget_Interaction : public UUserWidget
+class IDOCTOR_API UWidget_Item : public UUserWidget
 {
 	GENERATED_BODY()
 	
-public : 
-	void SetInteractionText(FString _text);
+public:
+	void SetItemCount(int32 _count);
 
-protected :
+protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-		FString Text;
+		int32 Count;
 
 	virtual void NativeConstruct() override;
 

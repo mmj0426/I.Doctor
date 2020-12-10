@@ -26,9 +26,8 @@ AMoonItem::AMoonItem()
 	Trigger->OnComponentBeginOverlap.AddDynamic(this, &AMoonItem::OnOverlapBegin);
 	Trigger->OnComponentEndOverlap.AddDynamic(this, &AMoonItem::OnOverlapEnd);
 
-	//Trigger->SetCollisionProfileName(TEXT("Item"));
-	Trigger->SetSphereRadius(150.0f);
-	Trigger->SetCollisionProfileName("Trigger");
+	Trigger->SetSphereRadius(60.0f);
+	//Trigger->SetCollisionProfileName("Item");
 
 	//정수가 건드릴 것 : FVector(0.0f,0.0f, 절반크기f);
 	Trigger->SetRelativeLocation(FVector(0.0f, 0.0f, 50.0f));
@@ -50,13 +49,16 @@ AMoonItem::AMoonItem()
 void AMoonItem::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+
 }
 
 // Called every frame
 void AMoonItem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	
 
 }
 
@@ -85,5 +87,3 @@ void AMoonItem::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* O
 		PlayerCharacter->WidgetInteraction->SetVisibility(false);
 	}
 }
-
-

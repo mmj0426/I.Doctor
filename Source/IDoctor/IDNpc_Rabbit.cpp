@@ -43,13 +43,6 @@ void AIDNpc_Rabbit::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//Animation
-	GetMesh()->SetAnimationMode(EAnimationMode::AnimationSingleNode);
-	UAnimationAsset* Rabbit_Anim = LoadObject<UAnimationAsset>(nullptr, TEXT("/Game/CharacterAsset/Animations/DizzyAnim.DizzyAnim"));
-	if (Rabbit_Anim != nullptr)
-	{
-		GetMesh()->PlayAnimation(Rabbit_Anim, true);
-	}
 }
 
 // Called every frame

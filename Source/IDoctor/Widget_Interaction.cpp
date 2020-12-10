@@ -9,8 +9,6 @@
 void UWidget_Interaction::NativeConstruct()
 {
 	Super::NativeConstruct();
-
-	//InteractionText->SetText(FText::FromString(TEXT(" ")));
 }
 
 void UWidget_Interaction::SetInteractionText(FString _text)
