@@ -88,6 +88,8 @@ AIDCharacter::AIDCharacter()
 	isPicking = false;
 	itemCount = 0;
 
+	
+
 }
 
 void AIDCharacter::PostInitializeComponents()
@@ -103,6 +105,8 @@ void AIDCharacter::PostInitializeComponents()
 		{
 			CurrentItem->Destroy();
 			itemCount++;
+			WidgetItem->SetItemCount(itemCount);
+			
 			
 			IDLOG(Warning, TEXT("Item Count : %d "), itemCount);
 		});
