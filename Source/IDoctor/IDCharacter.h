@@ -71,9 +71,6 @@ public :
 	UFUNCTION()
 		void OnPickupMotageEnded(UAnimMontage* Montage, bool bInterrupted);
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = UI, Meta = (AllowPrivateAccess = true))
-		class UWidget_Item* WidgetItem;
-
 private:
 	void MoveForward(float NewAxisValue);
 	void MoveRight(float NewAxisValue);
