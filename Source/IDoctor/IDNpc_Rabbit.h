@@ -31,6 +31,9 @@ public :
 	UPROPERTY(VisibleAnywhere, Category = Collision)
 		USphereComponent* Sphere;
 
+	UPROPERTY(EditAnywhere, Category = Collision, Meta = (AllowPrivateAccess = true))
+		bool canDestroy;
+
 	//Interaction
 	UFUNCTION()
 		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);

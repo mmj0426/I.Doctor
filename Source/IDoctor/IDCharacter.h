@@ -39,6 +39,9 @@ public :
 	UPROPERTY(VisibleAnywhere, Category = Item)
 		USphereComponent* Trigger;
 
+	UPROPERTY(VisibleAnywhere, Category = Character)
+		UAudioComponent* WalkSound;
+
 	//Dialogue
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Interact , Meta = (AllowPrivateAccess = true))
 		bool isInteracted;
