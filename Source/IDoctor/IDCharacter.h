@@ -6,7 +6,6 @@
 #include "GameFramework/Character.h"
 #include "IDCharacter.generated.h"
 
-
 UCLASS()
 class IDOCTOR_API AIDCharacter : public ACharacter
 {
@@ -37,12 +36,21 @@ public :
 	UPROPERTY(VisibleAnywhere, Category = Camera)
 		UCameraComponent* Camera;
 
+	UPROPERTY(VisibleAnywhere, Category = Item)
+		USphereComponent* Trigger;
+
 	//Dialogue
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Interact , Meta = (AllowPrivateAccess = true))
 		bool isInteracted;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Interact, Meta = (AllowPrivateAccess = true))
-		bool isOverlapped;
+		bool isNpcOverlapped;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Interact, Meta = (AllowPrivateAccess = true))
+		bool isItemOverlapped;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Interact, Meta = (AllowPrivateAccess = true))
+	//	bool isPicked;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = Dialogue)
 		void NpcDialogue();
@@ -50,8 +58,18 @@ public :
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = UI)
 		class UWidgetComponent* WidgetInteraction;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Dialogue)
-		class AIDNpc_Rabbit* Npc;
+	//Item
+	UFUNCTION()
+		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	UPROPERTY(VisibleAnywhere, Category = Item)
+		AActor* CurrentItem;
+
+	UFUNCTION()
+		void OnPickupMotageEnded(UAnimMontage* Montage, bool bInterrupted);
 
 private:
 	void MoveForward(float NewAxisValue);
@@ -61,4 +79,15 @@ private:
 
 	UFUNCTION()
 		void Interact();
+
+	void Pickup();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Item, Meta = (AllowPrivateAccess = true))
+		int32 itemCount;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = Item, Meta = (AllowPrivateAccess = true))
+		bool isPicking;
+
+	UPROPERTY()
+		class UIDAnimInstance* IDAnim;
 };

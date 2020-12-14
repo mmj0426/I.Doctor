@@ -1,12 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "IDNpc_Rabbit.h"
 #include "IDCharacter.h"
+#include "Widget_Interaction.h"
 
 #include "Components/SphereComponent.h"
 #include "Components/WidgetComponent.h"
-
 
 // Sets default values
 AIDNpc_Rabbit::AIDNpc_Rabbit()
@@ -36,7 +36,6 @@ AIDNpc_Rabbit::AIDNpc_Rabbit()
 		GetMesh()->SetSkeletalMesh(SK_RABBIT.Object);
 	}
 
-
 }
 
 // Called when the game starts or when spawned
@@ -44,13 +43,6 @@ void AIDNpc_Rabbit::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//Animation
-	GetMesh()->SetAnimationMode(EAnimationMode::AnimationSingleNode);
-	UAnimationAsset* Rabbit_Anim = LoadObject<UAnimationAsset>(nullptr, TEXT("/Game/CharacterAsset/Animations/DizzyAnim.DizzyAnim"));
-	if (Rabbit_Anim != nullptr)
-	{
-		GetMesh()->PlayAnimation(Rabbit_Anim, true);
-	}
 }
 
 // Called every frame
@@ -69,13 +61,18 @@ void AIDNpc_Rabbit::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 void AIDNpc_Rabbit::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	OnOverlap.Broadcast();
 	AIDCharacter* PlayerCharacter = Cast<AIDCharacter>(OtherActor);
+	UWidget_Interaction* WidgetInteraction = Cast<UWidget_Interaction>(PlayerCharacter->WidgetInteraction->GetUserWidgetObject());
+
 	if (nullptr != PlayerCharacter)
 	{
-		PlayerCharacter->isOverlapped = true;
+		if (nullptr != WidgetInteraction)
+		{
+			WidgetInteraction->SetInteractionText(FString(TEXT("대화하기")));
+		}
+
+		PlayerCharacter->isNpcOverlapped = true;
 		PlayerCharacter->WidgetInteraction->SetVisibility(true);
-		//PlayerCharacter->WidgetInteraction->
 	}
 }
 
@@ -84,8 +81,7 @@ void AIDNpc_Rabbit::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActo
 	AIDCharacter* PlayerCharacter = Cast<AIDCharacter>(OtherActor);
 	if (nullptr != PlayerCharacter)
 	{
-		PlayerCharacter->isOverlapped = false;
+		PlayerCharacter->isNpcOverlapped = false;
 		PlayerCharacter->WidgetInteraction->SetVisibility(false);
-		
 	}
 }
