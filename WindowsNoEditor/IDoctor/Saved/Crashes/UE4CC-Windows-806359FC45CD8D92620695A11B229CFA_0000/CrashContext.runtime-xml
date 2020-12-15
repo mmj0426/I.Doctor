@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FGenericCrashContext>
+<RuntimeProperties>
+<CrashVersion>3</CrashVersion>
+<ExecutionGuid>E804BD9149AF0BCA47ACE4A9684FEFF2</ExecutionGuid>
+<CrashGUID>UE4CC-Windows-806359FC45CD8D92620695A11B229CFA_0000</CrashGUID>
+<IsEnsure>true</IsEnsure>
+<IsAssert>false</IsAssert>
+<CrashType>Ensure</CrashType>
+<ErrorMessage>Ensure condition failed: FMath::IsFinite(TexelFactor) [File:Runtime\Engine\Classes\Engine/TextureStreamingTypes.h] [Line: 96]
+
+Stack: 
+0x00007ff67a7676f6 IDoctor.exe!UnknownFunction []
+0x00007ff6788cc25f IDoctor.exe!UnknownFunction []
+0x00007ff67924ffc4 IDoctor.exe!UnknownFunction []
+0x00007ff679204aae IDoctor.exe!UnknownFunction []
+0x00007ff679205244 IDoctor.exe!UnknownFunction []
+0x00007ff679205746 IDoctor.exe!UnknownFunction []
+0x00007ff679220259 IDoctor.exe!UnknownFunction []
+0x00007ff6789c92e6 IDoctor.exe!UnknownFunction []
+0x00007ff6789c4f3b IDoctor.exe!UnknownFunction []
+0x00007ff678ac36e1 IDoctor.exe!UnknownFunction []
+0x00007ff674c84d40 IDoctor.exe!UnknownFunction []
+0x00007ff674c973ac IDoctor.exe!UnknownFunction []
+0x00007ff674c9746a IDoctor.exe!UnknownFunction []
+0x00007ff674ca8700 IDoctor.exe!UnknownFunction []
+0x00007ff67a35131e IDoctor.exe!UnknownFunction []
+0x00007ffb839d7c24 KERNEL32.DLL!UnknownFunction []
+0x00007ffb8494d4d1 ntdll.dll!UnknownFunction []
+</ErrorMessage>
+<CrashReporterMessage></CrashReporterMessage>
+<ProcessId>19920</ProcessId>
+<SecondsSinceStart>1</SecondsSinceStart>
+<IsInternalBuild>false</IsInternalBuild>
+<IsPerforceBuild>false</IsPerforceBuild>
+<IsSourceDistribution>false</IsSourceDistribution>
+<GameName>UE4-IDoctor</GameName>
+<ExecutableName>IDoctor</ExecutableName>
+<BuildConfiguration>Development</BuildConfiguration>
+<GameSessionID></GameSessionID>
+<Symbols>**UE4*Release-4.25-CL-14469661-Win64-Development</Symbols>
+<PlatformName>WindowsNoEditor</PlatformName>
+<PlatformNameIni>Windows</PlatformNameIni>
+<EngineMode>Game</EngineMode>
+<EngineModeEx>Unset</EngineModeEx>
+<DeploymentName></DeploymentName>
+<EngineVersion>4.25.4-14469661+++UE4+Release-4.25</EngineVersion>
+<CommandLine> IDoctor</CommandLine>
+<LanguageLCID>0</LanguageLCID>
+<AppDefaultLocale>ko-KR</AppDefaultLocale>
+<BuildVersion>++UE4+Release-4.25-CL-14469661</BuildVersion>
+<IsUE4Release>false</IsUE4Release>
+<IsRequestingExit>false</IsRequestingExit>
+<UserName></UserName>
+<BaseDir>E:/I.Doctor/WindowsNoEditor/IDoctor/Binaries/Win64/</BaseDir>
+<RootDir>E:/I.Doctor/WindowsNoEditor/</RootDir>
+<MachineId>8D02034C44788BC9A7806CBE1A60DFAB</MachineId>
+<LoginId>8d02034c44788bc9a7806cbe1a60dfab</LoginId>
+<EpicAccountId>aa535938ff764fde9c3a13af30f5336f</EpicAccountId>
+<SourceContext></SourceContext>
+<UserDescription></UserDescription>
+<UserActivityHint></UserActivityHint>
+<CrashDumpMode>0</CrashDumpMode>
+<GameStateName></GameStateName>
+<Misc.NumberOfCores>6</Misc.NumberOfCores>
+<Misc.NumberOfCoresIncludingHyperthreads>12</Misc.NumberOfCoresIncludingHyperthreads>
+<Misc.Is64bitOperatingSystem>1</Misc.Is64bitOperatingSystem>
+<Misc.CPUVendor>AuthenticAMD</Misc.CPUVendor>
+<Misc.CPUBrand>AMD Ryzen 5 3600 6-Core Processor              </Misc.CPUBrand>
+<Misc.PrimaryGPUBrand>NVIDIA GeForce RTX 2060 SUPER</Misc.PrimaryGPUBrand>
+<Misc.OSVersionMajor>Windows 10 (Release 1909)</Misc.OSVersionMajor>
+<Misc.OSVersionMinor></Misc.OSVersionMinor>
+<MemoryStats.TotalPhysical>17111003136</MemoryStats.TotalPhysical>
+<MemoryStats.TotalVirtual>140737488224256</MemoryStats.TotalVirtual>
+<MemoryStats.PageSize>4096</MemoryStats.PageSize>
+<MemoryStats.TotalPhysicalGB>16</MemoryStats.TotalPhysicalGB>
+<MemoryStats.AvailablePhysical>2036912128</MemoryStats.AvailablePhysical>
+<MemoryStats.AvailableVirtual>140730469888000</MemoryStats.AvailableVirtual>
+<MemoryStats.UsedPhysical>427048960</MemoryStats.UsedPhysical>
+<MemoryStats.PeakUsedPhysical>469745664</MemoryStats.PeakUsedPhysical>
+<MemoryStats.UsedVirtual>1242746880</MemoryStats.UsedVirtual>
+<MemoryStats.PeakUsedVirtual>1244434432</MemoryStats.PeakUsedVirtual>
+<MemoryStats.bIsOOM>0</MemoryStats.bIsOOM>
+<MemoryStats.OOMAllocationSize>0</MemoryStats.OOMAllocationSize>
+<MemoryStats.OOMAllocationAlignment>0</MemoryStats.OOMAllocationAlignment>
+<NumMinidumpFramesToIgnore>0</NumMinidumpFramesToIgnore>
+<CallStack></CallStack>
+<PCallStack>
+IDoctor   0x00000000745c0000 + 61a76f6 
+IDoctor   0x00000000745c0000 + 430c25f 
+IDoctor   0x00000000745c0000 + 4c8ffc4 
+IDoctor   0x00000000745c0000 + 4c44aae 
+IDoctor   0x00000000745c0000 + 4c45244 
+IDoctor   0x00000000745c0000 + 4c45746 
+IDoctor   0x00000000745c0000 + 4c60259 
+IDoctor   0x00000000745c0000 + 44092e6 
+IDoctor   0x00000000745c0000 + 4404f3b 
+IDoctor   0x00000000745c0000 + 45036e1 
+IDoctor   0x00000000745c0000 + 6c4d40  
+IDoctor   0x00000000745c0000 + 6d73ac  
+IDoctor   0x00000000745c0000 + 6d746a  
+IDoctor   0x00000000745c0000 + 6e8700  
+IDoctor   0x00000000745c0000 + 5d9131e 
+KERNEL32  0x00000000839c0000 + 17c24   
+ntdll     0x00000000848e0000 + 6d4d1   
+</PCallStack>
+<PCallStackHash>38D1D6716F582FECFB926BEB3DE10990E877B78A</PCallStackHash>
+</RuntimeProperties>
+<PlatformProperties>
+<PlatformIsRunningWindows>1</PlatformIsRunningWindows>
+<IsRunningOnBattery>false</IsRunningOnBattery>
+<PlatformCallbackResult>0</PlatformCallbackResult>
+</PlatformProperties>
+<EngineData>
+<RHI.IsGPUOverclocked>false</RHI.IsGPUOverclocked>
+<RHI.RHIName>D3D11</RHI.RHIName>
+<RHI.AdapterName>NVIDIA GeForce RTX 2060 SUPER</RHI.AdapterName>
+<RHI.UserDriverVersion>452.06</RHI.UserDriverVersion>
+<RHI.InternalDriverVersion>27.21.14.5206</RHI.InternalDriverVersion>
+<RHI.DriverDate>8-12-2020</RHI.DriverDate>
+<RHI.FeatureLevel>SM5</RHI.FeatureLevel>
+<Platform.AppHasFocus>true</Platform.AppHasFocus>
+</EngineData>
+<GameData>
+</GameData>
+</FGenericCrashContext>
